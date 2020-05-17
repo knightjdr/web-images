@@ -2,6 +2,10 @@
 
 Image processing for web images
 
+## Dependencies
+
+[cwebp](https://developers.google.com/speed/webp/download)
+
 ## Convert images
 
 Convert images to WebP and reduce quality of JPEGs.
