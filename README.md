@@ -17,5 +17,12 @@ Convert images to WebP and reduce quality of JPEGs.
 node index.js
 ```
 
+Alternatively to only convert some images, provide their names as arguments. The `unprocessed`
+folder name is optional.
+
+```
+node index.js unprocessed/image1.png image2.png
+```
+
 3. JPEGs and WebP at 1x, 2x and 3x scale will be in the `processed` folder. The 3x images
 correspond to the dimensions of the original image.

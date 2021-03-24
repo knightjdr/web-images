@@ -19,8 +19,8 @@ const convert = (file, quality) => (
   })
 );
 
-const convertWebp = async (quality) => {
-  const files = await readImages('./scaled', ['.jpg', '.jpeg', '.png']);
+const convertWebp = async (quality, images) => {
+  const files = await readImages('./scaled', ['.jpg', '.jpeg', '.png'], images);
   await files.reduce(async (prevPromise, filename) => {
     await prevPromise;
     return convert(filename, quality);

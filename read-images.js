@@ -1,15 +1,30 @@
 const fs = require('fs').promises;
 const path = require('path');
 
-const readImages = async (dir, acceptedExtensions) => {
+const doesImageMatch = (images, basename) => {
+  if (images.length === 0) {
+    return true;
+  }
+  
+  return images.some((image) => {
+    const fileParts = path.parse(image);
+    const reString = `^${fileParts.name}\\d*x*`
+    const re = new RegExp(reString)
+    return re.test(basename);
+  });
+}
+
+const readImages = async (dir, acceptedExtensions, images = []) => {
   const files = await fs.readdir(dir);
-  const imagefiles = files.reduce((accum, filename) => {
-    if (acceptedExtensions.includes(path.extname(filename))) {
+  return files.reduce((accum, filename) => {
+    if (
+      acceptedExtensions.includes(path.extname(filename))
+      && doesImageMatch(images, path.parse(filename).name)
+    ) {
       return [...accum, `${dir}/${filename}`];
     }
     return accum;
   }, []);
-  return imagefiles;
 };
 
 module.exports = readImages;

@@ -10,8 +10,8 @@ const convert = async (file, quality) => {
   await image.writeAsync(`./processed/${name}.jpg`);
 };
 
-const reduceJPG = async (quality) => {
-  const files = await readImages('./scaled', ['.jpg', '.jpeg', '.png']);
+const reduceJPG = async (quality, images) => {
+  const files = await readImages('./scaled', ['.jpg', '.jpeg', '.png'], images);
   await files.reduce(async (prevPromise, filename) => {
     await prevPromise;
     return convert(filename, quality);
