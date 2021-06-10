@@ -10,7 +10,7 @@ Image processing for web images
 
 Convert images to WebP and reduce quality of JPEGs.
 
-1. Create image at 3x the required dimensions and place in `src/images/unprocessed`.
+1. Create image at 3x the required dimensions and place in `unprocessed`.
 
 2. Convert images
 ```
